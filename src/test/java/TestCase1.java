@@ -39,5 +39,10 @@ public class TestCase1 {
             driver.findElement(By.id("shopping_cart_container")).isDisplayed();
         }
 
+        @Test
+        public void verifyBurgerMenu(){
+            driver.findElement(By.className("bm-burger-button")).isDisplayed();
+        }
+
 
 }
