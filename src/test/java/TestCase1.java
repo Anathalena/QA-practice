@@ -61,4 +61,11 @@ public class TestCase1 {
             String url = "https://www.linkedin.com/company/sauce-labs/";
             driver.findElement(By.xpath("//a[@href=\"" + url + "\"]")).isEnabled();
         }
+
+        @Test
+        public void verifyLogout(){
+            driver.findElement(By.id("logout_sidebar_link")).isEnabled();
+        }
+
+
 }
