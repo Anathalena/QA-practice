@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
@@ -25,5 +26,10 @@ public class TestCase1 {
             driver.findElement(By.id("login-button")).click();
         }
 
+        @Test
+        public void verifyHeader(){
+            String actualHeader = driver.findElement(By.className("title")).getText();
+            Assert.assertEquals(actualHeader, "PRODUCTS");
+        }
 
 }
