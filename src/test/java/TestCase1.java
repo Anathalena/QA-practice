@@ -44,5 +44,21 @@ public class TestCase1 {
             driver.findElement(By.className("bm-burger-button")).isDisplayed();
         }
 
+        @Test
+        public void verifyTwitter(){
+            String url = "https://twitter.com/saucelabs";
+            driver.findElement(By.xpath("//a[@href=\"" + url + "\"]")).isEnabled();
+        }
 
+        @Test
+        public void verifyFacebook(){
+            String url = "https://www.facebook.com/saucelabs";
+            driver.findElement(By.xpath("//a[@href=\"" + url + "\"]")).isEnabled();
+        }
+
+        @Test
+        public void verifyLinkedin(){
+            String url = "https://www.linkedin.com/company/sauce-labs/";
+            driver.findElement(By.xpath("//a[@href=\"" + url + "\"]")).isEnabled();
+        }
 }
