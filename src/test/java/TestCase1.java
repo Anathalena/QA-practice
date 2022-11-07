@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class TestCase1 {
         public WebDriver driver;
         public String baseUrl = "https://www.saucedemo.com/";
@@ -31,5 +33,11 @@ public class TestCase1 {
             String actualHeader = driver.findElement(By.className("title")).getText();
             Assert.assertEquals(actualHeader, "PRODUCTS");
         }
+
+        @Test
+        public void verifyShoppingCart(){
+            driver.findElement(By.id("shopping_cart_container")).isDisplayed();
+        }
+
 
 }
