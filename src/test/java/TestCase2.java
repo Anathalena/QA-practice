@@ -36,9 +36,9 @@ public class TestCase2 {
     public void checkItem(){
         driver.findElement(By.id("item_4_title_link")).click();
         waitDriver.until(ExpectedConditions.urlToBe("https://www.saucedemo.com/inventory-item.html?id=4"));
-        driver.findElement(By.className("inventory_details_name large_size")).isDisplayed();
-        driver.findElement(By.className("inventory_details_desc large_size")).isDisplayed();
-        driver.findElement(By.className("inventory_item_price")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[1]")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[2]")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[3]")).isDisplayed();
         driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
         waitDriver.until(ExpectedConditions.visibilityOfElementLocated(By.id("remove-sauce-labs-backpack")));
 
@@ -49,6 +49,13 @@ public class TestCase2 {
         driver.findElement(By.id("back-to-products")).click();
         waitDriver.until(ExpectedConditions.urlToBe("https://www.saucedemo.com/inventory.html"));
     }
+
+    @Test(priority = 4)
+    public void checkItemFromHome(){
+        driver.findElement(By.id("add-to-cart-sauce-labs-fleece-jacket")).click();
+        waitDriver.until(ExpectedConditions.textToBe(By.className("shopping_cart_badge"), String.valueOf(2)));
+    }
+
 
     @AfterTest
     public void terminateBrowser(){
