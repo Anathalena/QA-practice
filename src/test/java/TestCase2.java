@@ -35,13 +35,23 @@ public class TestCase2 {
 
     @Test(priority = 2)
     public void checkItem(){
+        String title = "Sauce Labs Backpack";
+        String description = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
+        String price = "$29.99";
+
         driver.findElement(By.id("item_4_title_link")).click();
         waitDriver.until(ExpectedConditions.urlToBe("https://www.saucedemo.com/inventory-item.html?id=4"));
-        driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[1]")).isDisplayed();
-        driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[2]")).isDisplayed();
-        driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[3]")).isDisplayed();
+
+        String actualTitle = driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[1]")).getText();
+        String actualDesc = driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[2]")).getText();
+        String actualPrice = driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[3]")).getText();
+        Assert.assertEquals(title,actualTitle);
+        Assert.assertEquals(description,actualDesc);
+        Assert.assertEquals(price, actualPrice);
+
         driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
         waitDriver.until(ExpectedConditions.textToBe(By.className("shopping_cart_badge"), String.valueOf(1)));
+
         System.out.println("Title, description and price visible. Item added to cart from its own page successfully");
     }
 
