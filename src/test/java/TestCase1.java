@@ -34,7 +34,8 @@ public class TestCase1 {
             driver.findElement(By.id("user-name")).sendKeys("standard_user");
             driver.findElement(By.id("password")).sendKeys("secret_sauce");
             driver.findElement(By.id("login-button")).click();
-            waitDriver.until(ExpectedConditions.visibilityOfElementLocated(By.className("title")));
+            waitDriver.until(ExpectedConditions.urlToBe("https://www.saucedemo.com/inventory.html"));
+            System.out.println("Logged in");
         }
 
         @Test(priority =  3)
@@ -81,11 +82,12 @@ public class TestCase1 {
         }
 
         @Test(priority = 9)
-        public void verifyLogout(){
+        public void Logout(){
             driver.findElement(By.className("bm-burger-button")).click();
             waitDriver.until(ExpectedConditions.visibilityOfElementLocated(By.id("logout_sidebar_link")));
             driver.findElement(By.id("logout_sidebar_link")).click();
-            System.out.println("Logout link ok");
+            waitDriver.until(ExpectedConditions.urlToBe(baseUrl));
+            System.out.println("Logged out");
         }
 
         @AfterTest
